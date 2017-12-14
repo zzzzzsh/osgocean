@@ -26,6 +26,7 @@
 #include <osg/io_utils>
 #include <osg/Timer>
 #include <osg/Version>
+#include <osg/GLExtensions>
 
 using namespace osgOcean;
 
@@ -647,9 +648,9 @@ _numberOfVertices(copy._numberOfVertices)
 void SiltEffect::SiltDrawable::drawImplementation(osg::RenderInfo& renderInfo) const
 {
     if (!_geometry) return;
-
-    const osg::Geometry::Extensions* extensions = osg::Geometry::getExtensions(renderInfo.getContextID(),true);
-
+	const osg::GLExtensions* extensions = osg::GLExtensions::Get(renderInfo.getContextID(), true);
+    //const osg::Geometry::Extensions* extensions = o
+	
     glPushMatrix();
 
     typedef std::vector<const CellMatrixMap::value_type*> DepthMatrixStartTimeVector;
